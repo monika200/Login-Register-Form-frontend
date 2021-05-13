@@ -17,7 +17,7 @@ const Form = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     };
-    fetch("https://e-learning-portal-app.herokuapp.com/login", requestOptions)
+    fetch("https://eazr-login-registration-form.herokuapp.com/login", requestOptions)
       .then((response) => response.json())
       .then((data) => {
         console.log("fetch data::", data);

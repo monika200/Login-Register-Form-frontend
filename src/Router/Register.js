@@ -21,7 +21,7 @@ const Form = () => {
         password: data.password,
       }),
     };
-    fetch("https://e-learning-portal-app.herokuapp.com/register", requestOptions)
+    fetch("https://eazr-login-registration-form.herokuapp.com/register", requestOptions)
       .then((response) => response.json())
       .then((data) => {
         //console.log("fetch data::", data);
