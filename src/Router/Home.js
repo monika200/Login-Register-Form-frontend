@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { BACKEND_ENDPOINT } from './endpoint';
 class Home extends React.Component {
     constructor(props) {
         super(props)
@@ -10,31 +10,28 @@ class Home extends React.Component {
 
     componentDidMount() {
         const headers = { 'Content-Type': 'application/json','authorization':localStorage.token }
-        fetch('https://eazr-login-registration-form.herokuapp.com/', { headers })
+        fetch(`${BACKEND_ENDPOINT}/home`, { headers })
             .then(response => response.json())
             .then(data => this.setState({ message: data.message }));
     }
     refreshPage=()=> {
-    window.location.reload(false);
+    window.location.reload();
 }
     render() {
         return (
-            <div>
+            <div className="container">
                 {this.state.message === 'Please Login To See This Page...!!!' ?
                     (<div><h1>{this.state.message}</h1></div>) :
                     (<div>
                         <h1>{this.state.message}</h1>
-                        <div className="container bg-light">
-                        <h1> Welcome to eazr!</h1>
-                        <button className="bg-danger" onClick={() => {
+						<h1>Welcome to frontend!!!</h1>
+                        <button className="red" onClick={() => {
                             localStorage.removeItem('token');
                             this.refreshPage();
                         }}>Logout</button>
-                        </div>
                     </div>)
                 }
             </div>
-        
         )
     }
 }

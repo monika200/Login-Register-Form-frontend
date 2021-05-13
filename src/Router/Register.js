@@ -1,10 +1,8 @@
 import './style.css';
-
 import React from 'react';
-
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
-
+import { BACKEND_ENDPOINT } from './endpoint';
 const Form = () => {
   const { register, errors, handleSubmit, watch } = useForm();
   const history = useHistory();
@@ -21,7 +19,7 @@ const Form = () => {
         password: data.password,
       }),
     };
-    fetch("https://eazr-login-registration-form.herokuapp.com/register", requestOptions)
+    fetch(`${BACKEND_ENDPOINT}/register`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         //console.log("fetch data::", data);

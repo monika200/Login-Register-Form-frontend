@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {  useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { BACKEND_ENDPOINT } from './endpoint';
 import './style.css';
 
 
@@ -17,7 +19,7 @@ const Form = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     };
-    fetch("https://eazr-login-registration-form.herokuapp.com/login", requestOptions)
+    fetch(`${BACKEND_ENDPOINT}/login`, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         console.log("fetch data::", data);
@@ -59,6 +61,12 @@ const Form = () => {
         {errors.password?.type === "required" && (
           <p>Please Enter Your Password</p>
         )}
+		<p>
+			Do not have an account? <Link to='/register'>register here</Link>
+		</p>
+		<p className=''>
+			forgot passwrod? <Link to='/forgot'>reset here</Link>
+		</p>
 
         <input type="submit" className="bg-success" />
       </form>
