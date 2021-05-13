@@ -4,7 +4,7 @@ function Start() {
     const history = useHistory();
     return (
         <div className="container">
-            <h1 className="text-center">Please Login to start Learning!!!!!</h1>
+            <h1 className="text-center">Please Login to start!!!!!</h1>
              
             <button className="bg-success" onClick={() => {
                             history.push('/login');
